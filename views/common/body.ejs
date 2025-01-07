@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/body.css">
+    
+</head>
+<body>
+    <div class="box">
+        <div class="text-b1">
+            <div class="line">
+                   Browse thousands of degrees from around 
+            </div>
+            <div class="line2">
+                    the  world
+            </div>
+        </div>
+        
+        <div class="boxs">
+            <form id="searchForm" action="/searcher" method="get">
+                <div class="custom-dropdown">
+                    <select id="studyDropdownSelect" name="studyDropdownSelect" class="custom-dropdown-select">
+                        <option value="Select what to study" selected>Select what to study</option>
+                        <% programs.forEach(function(program) { %>
+                            <% if(program.title != null) { %>
+                                <option value="<%= program.title %>"><%= program.title %></option>
+                            <% } %>
+                        <% }); %>
+                    </select>
+                </div>
+                
+                <div class="custom-dropdown">
+                    <select id="placeDropdownSelect" name="placeDropdownSelect" class="custom-dropdown-select">
+                        <option value="Select where to study" selected>Select where to study</option>
+                        <% programs.forEach(function(program) { %>
+                            <% if(program.place != null) { %>
+                                <option value="<%= program.place %>"><%= program.place %></option>
+                            <% } %>
+                        <% }); %>
+                    </select>
+                </div>
+            
+                
+                    <button type="submit" class="search" id="searchButton" >Search</button>
+            
+            </form>
+            
+            <script src="js/bodydrop.js"></script>
+        </div>
+        
+    </div>
+     <br>
+     <br>
+     <div class="horizontal-line-container">
+        <div class="horizontal-line"></div>
+    </div>
+    <div class="cat-container">
+        <div class="tit-cat">
+            <div class="cat-title">
+                Browse programs by category
+            </div>
+            <div>
+                <a href="/all-category" class="cat-btn">View all the disciplines</a>
+
+            </div>
+        </div>
+        <div class="card-container">
+            <% categorys.forEach(function(category) { %>
+                <% if(category.front==1)  { %>
+                   
+                <div class="card">
+                    <a href="/all-category">
+                    <div class="card-content">
+                        <h2 class="card-title"><%= category.title %></h2>
+                        <p class="card-description"><%= category.txt1 %></p>
+                        <p class="card-description"><%= category.txt2 %></p>
+                        <p class="card-description"><%= category.txt3 %></p>
+                        <!-- Additional content to be displayed on hover -->
+                        <div class="additional-info">
+                            <!-- Add content here -->
+                        </div>
+                    </div></a>
+                </div>
+    
+                <% } %>
+            <% }) %>
+        </div>
+        
+        </div>
+        
+    </div>
+    <div class="black-body"></div>
+
+    <div class="sch-container">
+        <div class="tit-cat">
+            <div class="cat-title">
+                Scholarships for international students
+            </div>
+            <div>
+                <a href="/scholarship"><button class="cat-btn">View all</button></a>
+            </div>
+        </div>
+    
+        <div class="sch-txt">
+            Worried about your study costs?
+        </div>
+        <div class="sch-cards">
+
+            <% scholarship.forEach(function(scholar) { %>
+            <div class="box-sch">
+                <img src="/<%= scholar.image %>" alt="Image Description">
+                <div class="content">
+                    <h2><%= scholar.title %></h2>
+                    <br><br>
+                   <div class="data">
+                        <div class="txt-data">
+                            <%= scholar.time %>
+                        </div>
+                        <div class="read-data">
+                            <a href="/scholar/<%= scholar._id %>">Read-More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }) %>            
+            
+        </div>
+    </div>
+
+
+    <div class="sch-container">
+        <div class="tit-cat">
+            <div class="cat-title">
+                Discover study abroad countries
+            </div>
+            <div>
+                <button class="cat-btn">View all</button>
+            </div>
+        </div>
+    
+        <div class="sch-txt">
+            Explore our detailed breakdowns of the study abroad destinations around the world!
+        </div>
+        <div class="sch-cards">
+            <% country.forEach(function(con) { %>
+                <div class="box-sch">
+                    <img src="/<%= con.image %>" alt="Image Description">
+                    <div class="content">
+                        <h2><%= con.title %></h2>
+                        <br><br>
+                       <div class="data">
+                            <div class="txt-data">
+                                <%= con.time %>
+                            </div>
+                            <div class="read-data">
+                               <a href="/country/<%= con._id %>"> Read-More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>  
+            
+        </div>
+    </div>
+
+    <div class="sch-container">
+        <div class="tit-cat">
+            <div class="cat-title">
+                Student guides and tips
+            </div>
+            <div>
+                <button class="cat-btn">View all</button>
+            </div>
+        </div>
+    
+        <div class="sch-txt">
+            Learn our best tips for studying abroad!
+          </div>
+        <div class="sch-cards">
+
+            <div class="box-sch">
+                <img src="/images/guide-1.jpg" alt="Image Description">
+                <div class="content">
+                    <h2>How to Study Abroad: The Ultimate Guide for International Students in 2024</h2>
+                   <br><br>
+                   <div class="data">
+                        <div class="txt-data">
+                            Jan 1, 2024
+                        </div>
+                        <div class="read-data">
+                            Read-More
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="box-sch">
+                <img src="/images/guide-2.jpg" alt="Image Description">
+                <div class="content">
+                    <h2>Top 10 Places in the World to Study Abroad - 2024</h2>
+                    <br><br>
+                   <div class="data">
+                        <div class="txt-data">
+                            Jan 1, 2024
+                        </div>
+                        <div class="read-data">
+                            Read-More
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="box-sch">
+                <img src="/images/guide-3.jpeg" alt="Image Description">
+                <div class="content">
+                    <h2>The Cheapest Countries to Study In Europe</h2>
+                    <br><br>
+                   <div class="data">
+                        <div class="txt-data">
+                            Oct 20, 2022
+                        </div>
+                        <div class="read-data">
+                            Read-More
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="box-sch">
+                <img src="/images/guide-4.jpg" alt="Image Description">
+                <div class="content">
+                    <h2>Degree Guides</h2>
+                    <br><br>
+                   <div class="data">
+                        <div class="txt-data">
+                            Oct 11, 2022
+                        </div>
+                        <div class="read-data">
+                            Read-More
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+    </div>
+
+
+</body>
+</html>
